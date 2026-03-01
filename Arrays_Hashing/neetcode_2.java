@@ -11,6 +11,7 @@ public class neetcode_2 {
         if (s.length() != t.length()) {
             return false;
         }
+        
         int[] ch = new int[26];
         for (int i = 0; i < s.length(); i++) {
             ch[s.charAt(i) - 'a']++;
