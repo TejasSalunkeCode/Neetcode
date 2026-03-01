@@ -1,3 +1,4 @@
+package Arrays_Hashing;
 import java.util.HashSet;
 
 public class neetcode_1 {
