@@ -8,12 +8,12 @@ public class neetcode_1 {
     }
 
     public static boolean containDuplicate(int[] nums) {
-        HashSet<Integer> seenNumbers = new HashSet<>();
-        for (int num : nums) {
-            if (seenNumbers.contains(num)) {
+        HashSet<Integer> seennumbers = new HashSet<>();
+        for(int num : nums){
+            if(seennumbers.contains(num)){
                 return true;
             }
-            seenNumbers.add(num);
+            seennumbers.add(num);
         }
         return false;
     }
