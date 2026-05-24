@@ -1,16 +1,21 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class neetcode_6 {
+
     public static void main(String[] args) {
-        neetcode_6 sol = new neetcode_6();
+
         List<String> input = new ArrayList<>();
         input.add("neet");
         input.add("code");
         input.add("love");
         input.add("you");
-        System.out.println(encode(input));
+
+        String encoded = encode(input);
+        System.out.println("Encoded: " + encoded);
+
+        List<String> decoded = decode(encoded);
+        System.out.println("Decoded: " + decoded);
     }
 
     public static String encode(List<String> strs) {
@@ -35,8 +40,8 @@ public class neetcode_6 {
             }
 
             int length = Integer.parseInt(s.substring(i, j));
-            String word = s.substring(j + 1, j + 1 + length);
 
+            String word = s.substring(j + 1, j + 1 + length);
             res.add(word);
 
             i = j + 1 + length;

@@ -2,42 +2,31 @@ import java.util.Arrays;
 
 public class neetcode_7 {
     public static void main(String[] args) {
-        int[] nums = { 0, 8, 0 };
+        int[] nums = { 2,3,4,5 };
+                     //24 12 8 6
         int answ[] = productExceptSelf(nums);
         System.out.println(Arrays.toString(answ));
     }
-
     // 48,24,12,8
     // 0,-6,0,0,0
     public static int[] productExceptSelf(int[] nums) {
 
         int[] ans = new int[nums.length];
-        int sum = 1;
-        int cnt = 0, cnt2 = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                sum = sum * nums[i];
-                cnt2++;
-            } else {
-                cnt++;
-            }
+        Arrays.fill(ans, 1);
+        int pref=1;
+        int post=1;
+
+        for (int i = 1; i < ans.length; i++) {
+            ans[i]=pref*nums[i-1];
+            pref=ans[i];
         }
-        System.out.println(cnt);
-        for (int i = 0; i < ans.length; i++) {
-            if (cnt >= 2) {
-                ans[i] = 0;
-            } else if (cnt >= 1 && nums[i] != 0) {
-                ans[i] = 0;
-            } else if (cnt >= 1 && nums[i] == 0 && cnt2 >= 1) {
-                ans[i] = sum;
-            } else if (cnt >= 1 && nums[i] == 0 && sum == 1) {
-                ans[i] = 0;
-            } else {
-                ans[i] = sum / nums[i];
-            }
-            System.out.println(Arrays.toString(ans));
+System.out.println(Arrays.toString(ans));
+        for (int i = ans.length-2; i >=0; i--) {
+            post=nums[i+1]*post;       
+        ans[i]=ans[i]*post;
+        // ans[i]=
         }
-        System.out.println(sum);
+
         return ans;
     }
 }
