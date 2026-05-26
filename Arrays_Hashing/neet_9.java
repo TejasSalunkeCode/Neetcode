@@ -6,28 +6,27 @@ public class neet_9{
             System.out.println(longestconsecutive(arr));
     }
     public static int longestconsecutive(int[]nums){
-        if(nums.length==0){
-            return 0;
+      if(nums.length==0){
+        return 0;
+      }
+      HashSet<Integer> set = new HashSet<>();
+      for (int i = 0; i < nums.length; i++) {
+        set.add(nums[i]);
+      }
+      int longestseq=1;
+      for(int num : set){
+        if(set.contains(num-1)){
+          continue;
+        }else{
+          int currentNum=num;
+          int currentSeq=1;
+          while (set.contains(currentNum+1)) {
+            currentNum++;
+            currentSeq++;
+          }
+          longestseq = Math.max(longestseq,currentSeq);
         }
-        HashSet<Integer> numset = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            numset.add(nums[i]);
-        }
-        int longestSub=1;
-        for(int num:numset){
-            if(numset.contains(num-1)){
-                continue;
-            }else{
-                int currNum=num;
-                int currSub=1;
-                while (numset.contains(currNum+1)) {
-                    currNum++;
-                    currSub++;
-                }
-                longestSub=Math.max(currSub, longestSub);
-            }
-
-        }
-        return longestSub;
+      }
+      return longestseq;
     }
-}
+  }
