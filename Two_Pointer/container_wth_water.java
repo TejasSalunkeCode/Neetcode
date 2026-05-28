@@ -8,17 +8,21 @@ public class container_wth_water {
     public static int maxArea(int[] heights) {
       int max=0;
       int left=0;
+      int area=0;
+      int dist=0;
       int right=heights.length-1;
-      while (left<right) {
-        int width=right-left;
-        int area=Math.min(heights[left], heights[right])*width;
-        max=Math.max(max, area);
-        if(heights[left]<=heights[right]){
-            left++;
-        }else{
+
+      while (left!=right) {
+        max=Math.min(heights[left], heights[right]);
+        dist=right-left;
+        area=Math.max( max*dist,area);
+        if(heights[left]>=heights[right]){
             right--;
+        }else{
+            left++;
         }
-      }
-      return max;
+      } 
+      return area;
+
     }
 }
